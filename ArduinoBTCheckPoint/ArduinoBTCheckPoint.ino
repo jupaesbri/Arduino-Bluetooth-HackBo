@@ -5,40 +5,40 @@ char a;
 void setup() 
 {
   //INICIALIZAMOS LA COMUNICACION SERIAL
-  Serial1.begin(38400); //PUERTO DE INTERFAZ
   Serial.begin(38400); //COMUNICACION SERIAL DEL MODULO
+  //Serial.begin(38400); //PUERTO DE INTERFAZ
   delay(2000);
 
   
   //Serial.println("Comenzando...");
   //RESETEAMOS AT
-  Serial1.println("AT+RESET");
+  Serial.println("AT+RESET");
   delay(2000);
   
   //INICIAMOS AT
-  Serial1.println("AT");
+  Serial.println("AT");
   delay(2000);
   
   //INICIAMOS LA BUSQUEDA DE LA CONEXION
-  Serial1.println("AT+INIT");
+  Serial.println("AT+INIT");
   //Serial.println("AHORA");
   delay(2000);
 
   //VACIAMOS EL BUFFER
-  while(Serial1.available())
-  Serial1.read();
+  //while(Serial.available())
+  //Serial1.read();
 }
 
 void loop() 
 {
   //AT+INQ PREGUNTA SI HAY ALGUN DISPOSITIVO CERCA
   delay(3000);
-  Serial1.println("AT+INQ"); 
+  Serial.println("AT+INQ"); 
 
-  delay(300);
-  while(Serial1.available())
+  delay(500);
+  while(Serial.available())
   {
-      a=Serial1.read();
+      a=Serial.read();
       
       if(a != '\n')
       {
